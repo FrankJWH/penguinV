@@ -63,7 +63,7 @@ before_script:
   - |
     if [[ "$STATIC_ANALYSIS" != "ON" ]]; then
       mkdir -p build && cd build
-      cmake .. ${CMAKE_OPTIONS}
+      cmake .. ${CMAKE_OPTIONS} -- -j 2
     fi
 
 script:
@@ -84,7 +84,7 @@ script:
     else
       # Build and run tests
       set -e
-      cmake --build .
+      cmake --build . -- -j 2
       set +e
       if [[ "$DYNAMIC_ANALYSIS" == "ON" ]]; then
         ctest -R unit_test --extra-verbose -T MemCheck # execute unit_test only
