@@ -63,7 +63,7 @@ before_script:
   - |
     if [[ "$STATIC_ANALYSIS" != "ON" ]]; then
       mkdir -p build && cd build
-      cmake .. ${CMAKE_OPTIONS} -- -j 2
+      cmake .. ${CMAKE_OPTIONS}
     fi
 
 script:
